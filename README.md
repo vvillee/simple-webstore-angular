@@ -1,4 +1,4 @@
-Very very simple example of store and cart without any backend. Status: quick example made in couple of hours.
+Very very simple example of store and cart without any backend. Status: quick draft made in couple of hours.
 
 Just open the index.html file with your browser.
 
