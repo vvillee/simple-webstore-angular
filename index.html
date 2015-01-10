@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="webstore">
+<html lang="fi" ng-app="webstore">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sample Webshop</title>
+        <title>Simple Webstore Angular</title>
 
-        <!-- Latest compiled and minified CSS -->
+        <!-- Latest compiled and minified Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
     </head>
@@ -14,17 +14,19 @@
         <div class="container" ng-view ng-controller="CartController as cart">
             <div class="product-list" >
                 <h1>Tuotteet</h1>
-                <ul>
-                    <li ng-repeat="product in store.products"> {{product.name}} {{product.price | currency:"€"}} <button class="btn btn-default btn-xs" ng-click="cart.addProduct(product);">Lisää ostoskoriin</button></li>
-                </ul>
+                <table class="table">
+                    <tr><th>Tuotenimi</th><th>Hinta</th><th>Lisää ostoskoriin</th></tr>
+                    <tr ng-repeat="product in store.products"><td>{{product.name}}</td><td>{{product.price | currency:"€"}}</td><td><button class="btn btn-default btn-xs" ng-click="cart.addProduct(product);">Lisää ostoskoriin</button></td></tr>
+                </table>
             </div>
             <div class="cart">
                 <h1>Ostoskori</h1>
-                <ul>
-                    <li ng-repeat="item in cart.cartItems"> {{item.product.name}} {{item.count}}kpl, yht. {{cart.getItemTotalSum(item) | currency:"€"}} (alv. {{cart.getItemTotalSumVat(item) | currency:"€"}})  <button class="btn btn-default btn-xs" ng-click="cart.reduceProduct(item.product);"><span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span></button> <button class="btn btn-default btn-xs" ng-click="cart.removeProduct(item.product);"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button></li>
-                </ul>
-                <p ng-show="cart.cartItems.length>0">Yhteensä {{cart.getTotalSum() | currency:"€"}}</p>
+                <table class="table" ng-show="cart.cartItems.length>0">
+                    <tr><th>Tuotenimi</th><th>Kappalemäärä</th><th>Kokonaishinta</th><th>Alv.</th><th colspan="2">Toiminnot</th></tr>
+                    <tr ng-repeat="item in cart.cartItems"><td>{{item.product.name}}</td><td>{{item.count}}kpl</td><td>{{cart.getItemTotalSum(item) | currency:"€"}}</td><td>{{cart.getItemTotalSumVat(item) | currency:"€"}}</td><td><button class="btn btn-default btn-xs" ng-click="cart.reduceProduct(item.product);"><span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span></button>&nbsp;<button class="btn btn-default btn-xs" ng-click="cart.removeProduct(item.product);"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>
+                </table>
                 <p ng-show="cart.cartItems.length<1">Ostoskorissa ei ole tuotteita</p>
+                <p ng-show="cart.cartItems.length>0">Yhteensä {{cart.getTotalSum() | currency:"€"}}</p>
                 <button type="button" class="btn btn-default" ng-show="cart.cartItems.length>0" ng-click="cart.makeOrder()">Tilaa</button>
             </div>
         </div>
