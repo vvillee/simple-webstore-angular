@@ -2,4 +2,4 @@ Very very simple example of store and cart without any backend. Status: quick dr
 
 Just open the index.html file with your browser.
 
-Tested with Google Chrome (v. 39.0.2171.95) and Safari (v. Versio 7.1.2)
+Tested with Google Chrome (v. 39.0.2171.95) and Safari (v. 7.1.2)
