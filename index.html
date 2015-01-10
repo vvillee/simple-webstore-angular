@@ -10,13 +10,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
     </head>
-    <body ng-controller="WebstoreController as store">
+    <body ng-controller="ProductController as products">
         <div class="container" ng-view ng-controller="CartController as cart">
             <div class="product-list" >
                 <h1>Tuotteet</h1>
                 <table class="table">
                     <tr><th>Tuotenimi</th><th>Hinta</th><th>Lisää ostoskoriin</th></tr>
-                    <tr ng-repeat="product in store.products"><td>{{product.name}}</td><td>{{product.price | currency:"€"}}</td><td><button class="btn btn-default btn-xs" ng-click="cart.addProduct(product);">Lisää ostoskoriin</button></td></tr>
+                    <tr ng-repeat="product in products.products"><td>{{product.name}}</td><td>{{product.price | currency:"€"}}</td><td><button class="btn btn-default btn-xs" ng-click="cart.addProduct(product);">Lisää ostoskoriin</button></td></tr>
                 </table>
             </div>
             <div class="cart">

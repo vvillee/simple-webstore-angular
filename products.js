@@ -1,7 +1,7 @@
 (function(){
   var app = angular.module('webstore-products',[]);
 
-  app.controller('WebstoreController', function(){
+  app.controller('ProductController', function(){
     this.products = products;
   });
 
